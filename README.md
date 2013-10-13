@@ -22,13 +22,10 @@ contribute patches.
 
 ### How to insert your application
 
-The /app directory currently contains a plain vanilla Django application 
-you can replace it with your custom application. Just make sure the wsgi.py
-contains at least the following lines:
+In /app currently a django project is created with startproject. You will
+probably want to replace the content of /app with the root of your django
+project.
 
-```
-import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
-```
+uWSGI chdirs to /app so in uwsgi.ini you will need to make sure the python path
+to the wsgi.py file is relative to that.
+

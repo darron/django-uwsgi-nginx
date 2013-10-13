@@ -34,13 +34,19 @@ run apt-get install -y sqlite3
 
 # install our code
 add . /home/docker/code/
-run pip install -r /home/docker/code/app/requirements.txt
 
 # setup all the configfiles
 run echo "daemon off;" >> /etc/nginx/nginx.conf
 run rm /etc/nginx/sites-enabled/default
 run ln -s /home/docker/code/nginx-app.conf /etc/nginx/sites-enabled/
 run ln -s /home/docker/code/supervisor-app.conf /etc/supervisor/conf.d/
+
+# run pip install
+run pip install -r /home/docker/code/app/requirements.txt
+
+# install django, normally you would remove this step because your project would already
+# be installed in the code/app/ directory
+run django-admin.py startproject website /home/docker/code/app/ 
 
 expose 80
 cmd ["supervisord", "-n"]
