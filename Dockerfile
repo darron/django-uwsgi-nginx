@@ -18,13 +18,13 @@ maintainer Dockerfiles
 
 run echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 run apt-get update
-run apt-get install -y build-essential 
+run apt-get install -y build-essential git
 run apt-get install -y python python-dev python-setuptools
 run apt-get install -y nginx supervisor
 run easy_install pip
 
 # install uwsgi now because it takes a little while
-run pip install uwsgi pymongo
+run pip install uwsgi
 
 # install nginx
 run apt-get install -y python-software-properties
@@ -50,4 +50,3 @@ run django-admin.py startproject website /home/docker/code/app/
 
 expose 80
 cmd ["supervisord", "-n"]
-
