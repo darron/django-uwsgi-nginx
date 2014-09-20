@@ -16,9 +16,10 @@ from ubuntu:precise
 
 maintainer Dockerfiles
 
-run echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+run echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-updates main restricted" | tee -a /etc/apt/sources.list.d/precise-updates.list
+
 run apt-get update
-run apt-get install -y build-essential git
+run apt-get install -y git
 run apt-get install -y python python-dev python-setuptools
 run apt-get install -y nginx supervisor
 run easy_install pip
@@ -29,7 +30,7 @@ run pip install uwsgi
 # install nginx
 run apt-get install -y python-software-properties
 run apt-get update
-RUN add-apt-repository -y ppa:nginx/stable
+run add-apt-repository -y ppa:nginx/stable
 run apt-get install -y sqlite3
 
 # install our code
