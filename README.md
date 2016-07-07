@@ -8,7 +8,7 @@ for python applications and allows lots of flexibility.
 
 Nginx has become the standard for serving up web applications and has the 
 additional benefit that it can talk to uWSGI using the uWSGI protocol, further
-elinimating overhead. 
+eliminating overhead. 
 
 Most of this setup comes from the excellent tutorial on 
 https://uwsgi.readthedocs.org/en/latest/tutorials/Django_and_nginx.html
