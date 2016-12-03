@@ -20,8 +20,14 @@ as needed. Once you're really into making your project you'll notice you've
 touched most files here.
 
 ### Build and run
-* docker build -t webapp .
-* docker run -d webapp
+#### Build with python3
+* `docker build -t webapp .`
+* `docker run -d -p 80:80 webapp`
+* go to 127.0.0.1 to see if works
+#### Build with python2
+* `docker build -f Dockerfile-py2 -t webapp .`
+* `docker run -d -p 80:80 webapp`
+* go to 127.0.0.1 to see if works
 
 ### How to insert your application
 
