@@ -28,7 +28,8 @@ RUN apt-get update && \
 	python-pip \
 	nginx \
 	supervisor \
-	sqlite3 && \
+        sqlite3 \
+        libmysqlclient-dev && \
 	pip install -U pip setuptools && \
   	rm -rf /var/lib/apt/lists/*
 
