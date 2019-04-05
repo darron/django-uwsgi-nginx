@@ -21,7 +21,7 @@ MAINTAINER Leo Du <leo@tianzhui.cloud>
 # Install required packages and remove the apt packages cache when done.
 RUN apt-get update && \
     apt-get upgrade -y && \ 
-    apt-get install -y git python python-dev python-setuptools python-pip nginx supervisor libmysqlclient-dev && \
+    apt-get install -y python python-dev python-setuptools python-pip nginx supervisor libmysqlclient-dev && \
     pip install -U pip setuptools && \
     rm -rf /var/lib/apt/lists/*
 
