@@ -13,24 +13,23 @@
 # limitations under the License.
 
 FROM ubuntu:16.04
+#FROM python:3.7.7-buster
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
-
-ENV PYTHON_VERSION 3.7.7
 
 # Install required packages and remove the apt packages cache when done.
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget nginx supervisor libmysqlclient-dev && \
     cd /usr/src && \
-    wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz && \
-    tar xzf Python-$PYTHON_VERSION.tgz && \
-    cd Python-$PYTHON_VERSION && \
+    wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz && \
+    tar xzf Python-3.7.3.tgz && \
+    cd Python-3.7.3 && \
     ./configure --enable-optimizations && \
     make altinstall && \
-    rm -rf /usr/src/Python-$PYTHON_VERSION.tgz && \
-    cd /usr/src/ && \
-    rm -rf /usr/src/Python-$PYTHON_VERSION/ && \
+    rm -rf /usr/src/Python-3.7.3.tgz && \
+    cd /usr/src && \
+    rm -rf /usr/src/Python-3.7.3 && \
     python3.7 -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
 
