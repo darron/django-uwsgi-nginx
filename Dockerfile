@@ -11,10 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#RUN cd /usr/src/ && \
-#    rm -rf /usr/src/Python-3.7.3/ && \
+
 FROM ubuntu:16.04
-#FROM python:3.7.7-buster
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
 
@@ -29,6 +27,8 @@ RUN apt-get update && \
     ./configure --enable-optimizations && \
     make altinstall && \
     rm -rf /usr/src/Python-3.7.3.tgz && \
+    cd /usr/src && \
+    rm -rf /usr/src/Python-3.7.3 && \
     python3.7 -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
 
