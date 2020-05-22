@@ -28,7 +28,7 @@ RUN apt-get update && \
     make altinstall && \
     rm -rf /usr/src/Python-3.7.3.tgz && \
     cd /usr/src && \
-    rm -rf /usr/src/Python-3.7.3/ && \
+    rm -rf /usr/src/Python-3.7.3 && \
     python3.7 -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
 
