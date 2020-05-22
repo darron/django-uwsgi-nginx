@@ -27,8 +27,6 @@ RUN apt-get update && \
     ./configure --enable-optimizations && \
     make altinstall && \
     rm -rf /usr/src/Python-3.7.3.tgz && \
-    cd .. && \
-    rm -rf /usr/src/Python-3.7.3/ && \
     apt-get install -y nginx supervisor libmysqlclient-dev && \
     python3.7 -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
@@ -48,6 +46,9 @@ RUN python3.7 -m pip install -r /home/docker/code/app/requirements.txt
 
 # add (the rest of) our code
 COPY . /home/docker/code/
+
+RUN cd .. && \
+    rm -rf /usr/src/Python-3.7.3/
 
 EXPOSE 80
 CMD ["supervisord", "-n"]
