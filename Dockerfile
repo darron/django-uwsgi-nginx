@@ -28,10 +28,11 @@ RUN apt-get update && \
     cd Python-$PYTHON_VERSION && \
     ./configure --enable-optimizations && \
     make altinstall && \
+    ln -s /usr/local/bin/python3 /usr/local/bin/python && \
     rm -rf /usr/src/Python-$PYTHON_VERSION.tgz && \
     cd /usr/src && \
     rm -rf /usr/src/Python-$PYTHON_VERSION && \
-    python3.7 -m pip install --upgrade pip setuptools && \
+    python -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
 
 # install uwsgi now because it takes a little while
@@ -39,7 +40,7 @@ RUN apt-get update && \
 #    python3.7 -m pip install --upgrade pip setuptools && \
 #    python3.7 -m pip install uwsgi && \
 #    rm -rf /var/lib/apt/lists/*
-RUN python3.7 -m pip install uwsgi
+RUN python -m pip install uwsgi
 
 # setup all the configfiles
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -49,7 +50,7 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 # COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
 # to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY app/requirements.txt /home/docker/code/app/
-RUN python3.7 -m pip install -r /home/docker/code/app/requirements.txt
+RUN python -m pip install -r /home/docker/code/app/requirements.txt
 
 # add (the rest of) our code
 COPY . /home/docker/code/
