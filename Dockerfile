@@ -12,28 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
+FROM python:3.7.7-buster
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
 
 # Install required packages and remove the apt packages cache when done.
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget nginx supervisor libmysqlclient-dev && \
-    cd /usr/src && \
-    wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz && \
-    tar xzf Python-3.7.3.tgz && \
-    cd Python-3.7.3 && \
-    ./configure --enable-optimizations && \
-    make altinstall && \
-    rm -rf /usr/src/Python-3.7.3.tgz && \
-    cd /usr/src && \
-    rm -rf /usr/src/Python-3.7.3 && \
-    python3.7 -m pip install --upgrade pip setuptools && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    apt-get upgrade -y && \
+#    apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget nginx supervisor libmysqlclient-dev && \
+#    cd /usr/src && \
+#    wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz && \
+#    tar xzf Python-3.7.3.tgz && \
+#    cd Python-3.7.3 && \
+#    ./configure --enable-optimizations && \
+#    make altinstall && \
+#    rm -rf /usr/src/Python-3.7.3.tgz && \
+#    cd /usr/src && \
+#    rm -rf /usr/src/Python-3.7.3 && \
+#    python3.7 -m pip install --upgrade pip setuptools && \
+#    rm -rf /var/lib/apt/lists/*
 
 # install uwsgi now because it takes a little while
-RUN python3.7 -m pip install uwsgi
+RUN python3.7 -m pip install --upgrade pip setuptools && \
+    python3.7 -m pip install uwsgi
 
 # setup all the configfiles
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
