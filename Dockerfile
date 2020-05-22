@@ -27,6 +27,8 @@ RUN apt-get update && \
     ./configure --enable-optimizations && \
     make altinstall && \
     rm -rf /usr/src/Python-3.7.3.tgz && \
+    cd .. && \
+    rm -rf /usr/src/Python-3.7.3/ && \
     apt-get install -y nginx supervisor libmysqlclient-dev && \
     python3.7 -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
