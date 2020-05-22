@@ -34,9 +34,10 @@ MAINTAINER Leo Du <leo@tianzhui.cloud>
 #    rm -rf /var/lib/apt/lists/*
 
 # install uwsgi now because it takes a little while
-RUN apt-get install -y nginx supervisor && \
+RUN apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget nginx supervisor libmysqlclient-dev && \
     python3.7 -m pip install --upgrade pip setuptools && \
-    python3.7 -m pip install uwsgi
+    python3.7 -m pip install uwsgi && \
+    rm -rf /var/lib/apt/lists/*
 
 # setup all the configfiles
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
