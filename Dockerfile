@@ -48,8 +48,5 @@ RUN python3.7 -m pip install -r /home/docker/code/app/requirements.txt
 # add (the rest of) our code
 COPY . /home/docker/code/
 
-RUN cd .. && \
-    rm -rf /usr/src/Python-3.7.3/
-
 EXPOSE 80
 CMD ["supervisord", "-n"]
