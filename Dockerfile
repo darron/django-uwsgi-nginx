@@ -34,7 +34,8 @@ MAINTAINER Leo Du <leo@tianzhui.cloud>
 #    rm -rf /var/lib/apt/lists/*
 
 # install uwsgi now because it takes a little while
-RUN python3.7 -m pip install --upgrade pip setuptools && \
+RUN apt-get install -y nginx supervisor && \
+    python3.7 -m pip install --upgrade pip setuptools && \
     python3.7 -m pip install uwsgi
 
 # setup all the configfiles
