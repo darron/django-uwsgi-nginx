@@ -19,7 +19,7 @@ MAINTAINER Leo Du <leo@tianzhui.cloud>
 # Install required packages and remove the apt packages cache when done.
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget && \
+    apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget nginx supervisor libmysqlclient-dev && \
     cd /usr/src && \
     wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz && \
     tar xzf Python-3.7.3.tgz && \
@@ -27,7 +27,8 @@ RUN apt-get update && \
     ./configure --enable-optimizations && \
     make altinstall && \
     rm -rf /usr/src/Python-3.7.3.tgz && \
-    apt-get install -y nginx supervisor libmysqlclient-dev && \
+    cd /usr/src && \
+    rm -rf /usr/src/Python-3.7.3/ && \
     python3.7 -m pip install --upgrade pip setuptools && \
     rm -rf /var/lib/apt/lists/*
 
