@@ -34,7 +34,7 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 # to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY app/requirements.txt /home/docker/code/app/
 
-RUN python -m pip install mysqlclient==1.4.6
+RUN python -m pip install mysqlclient==1.4.6 --no-deps
 RUN python -m pip install Django==3.0.5 --no-deps
 RUN python -m pip install aws-xray-sdk==2.4.3
 RUN python -m pip install boto3==1.12.36 --no-deps
