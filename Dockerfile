@@ -34,6 +34,7 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 # to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY app/requirements.txt /home/docker/code/app/
 
+RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 RUN python -m pip install aiobotocore --no-deps
 RUN python -m pip install aioitertools --no-deps
 RUN python -m pip install typing-extensions jmespath docutils urllib3 python-dateutil --no-deps
@@ -41,7 +42,6 @@ RUN python -m pip install async-timeout chardet multidict yarl attrs six idna --
 #RUN python -m pip install aiohttp --no-deps
 RUN python -m pip install jsonpickle --no-deps
 RUN python -m pip install wrapt --no-deps
-RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 
 # add (the rest of) our code
 COPY . /home/docker/code/
