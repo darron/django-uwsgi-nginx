@@ -43,8 +43,8 @@ RUN python -m pip install async-timeout --no-deps
 RUN python -m pip install chardet --no-deps
 RUN python -m pip install multidict --no-deps
 RUN python -m pip install yarl --no-deps
-RUN python -m pip install attrs --no-deps
-#RUN python -m pip install six --no-deps
+#RUN python -m pip install attrs --no-deps
+RUN python -m pip install six --no-deps
 RUN python -m pip install jsonpickle --no-deps
 RUN python -m pip install wrapt --no-deps
 
