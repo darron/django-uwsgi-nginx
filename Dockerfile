@@ -41,7 +41,7 @@ RUN python -m pip install boto3==1.12.36 --no-deps
 RUN python -m pip install botocore==1.15.36 --no-deps
 RUN python -m pip install aiobotocore aioitertools typing-extensions jmespath docutils urllib3 python-dateutil --no-deps
 RUN python -m pip install async-timeout chardet multidict yarl attrs six idna --no-deps
-RUN python -m pip install asyncio
+RUN python -m pip install asyncio --no-deps
 RUN python -m pip install aiohttp --no-deps
 RUN python -m pip install jsonpickle wrapt --no-deps
 RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
