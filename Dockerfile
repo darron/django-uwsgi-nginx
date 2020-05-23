@@ -19,7 +19,7 @@ RUN apt-get update && \
     rm -rf /usr/src/Python-$PYTHON_VERSION.tgz && \
     cd /usr/src && \
     rm -rf /usr/src/Python-$PYTHON_VERSION && \
-    python -m pip install --upgrade pip setuptools && \
+    python -m pip install --upgrade pip setuptools --no-deps && \
     rm -rf /var/lib/apt/lists/*
 
 # Install uwsgi now because it takes a little while
