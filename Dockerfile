@@ -1,4 +1,4 @@
-#wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz && \
+
 FROM ubuntu:16.04
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
@@ -33,7 +33,9 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 # COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
 # to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY app/requirements.txt /home/docker/code/app/
-RUN python -m pip install -r /home/docker/code/app/requirements.txt
+
+RUN python -m pip install mysqlclient==1.4.6
+RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 
 # add (the rest of) our code
 COPY . /home/docker/code/
