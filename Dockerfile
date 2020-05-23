@@ -37,9 +37,18 @@ COPY app/requirements.txt /home/docker/code/app/
 RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 RUN python -m pip install aiobotocore --no-deps
 RUN python -m pip install aioitertools --no-deps
-RUN python -m pip install typing-extensions jmespath docutils urllib3 python-dateutil --no-deps
-RUN python -m pip install async-timeout chardet multidict yarl attrs six idna --no-deps
-#RUN python -m pip install aiohttp --no-deps
+RUN python -m pip install typing-extensions --no-deps
+RUN python -m pip install jmespath --no-deps
+RUN python -m pip install docutils --no-deps
+RUN python -m pip install urllib3 --no-deps
+RUN python -m pip install python-dateutil --no-deps
+RUN python -m pip install async-timeout --no-deps
+RUN python -m pip install chardet --no-deps
+RUN python -m pip install multidict --no-deps
+RUN python -m pip install yarl --no-deps
+RUN python -m pip install attrs --no-deps
+RUN python -m pip install six --no-deps
+RUN python -m pip install idna --no-deps
 RUN python -m pip install jsonpickle --no-deps
 RUN python -m pip install wrapt --no-deps
 
