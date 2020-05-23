@@ -39,7 +39,8 @@ RUN python -m pip install Django==3.0.5 --no-deps
 RUN python -m pip install aws-xray-sdk==2.4.3 --no-deps
 RUN python -m pip install boto3==1.12.36 --no-deps
 RUN python -m pip install botocore==1.15.36 --no-deps
-RUN python -m pip install aiobotocore aioitertools typing-extensions jmespath docutils urllib3 python-dateutil async-timeout --no-deps
+RUN python -m pip install aiobotocore aioitertools typing-extensions jmespath docutils urllib3 python-dateutil --no-deps
+RUN python -m pip install async-timeout chardet multidict yarl attrs six idna --no-deps
 RUN python -m pip install asyncio
 RUN python -m pip install aiohttp
 RUN python -m pip install jsonpickle wrapt --no-deps
