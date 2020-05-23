@@ -41,7 +41,7 @@ RUN python -m pip install boto3==1.12.36 --no-deps
 RUN python -m pip install botocore==1.15.36 --no-deps
 RUN python -m pip install aiobotocore asyncio aiohttp --no-deps
 
-#RUN python -m pip install jsonpickle wrapt Flask
+RUN python -m pip install jsonpickle wrapt
 RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 
 # add (the rest of) our code
