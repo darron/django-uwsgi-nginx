@@ -1,4 +1,4 @@
-
+#wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz && \
 FROM ubuntu:16.04
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget nginx supervisor libmysqlclient-dev && \
     cd /usr/src && \
-    wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz && \
+    curl -SL "https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz" -o Python-$PYTHON_VERSION.tgz && \
     tar xzf Python-$PYTHON_VERSION.tgz && \
     cd Python-$PYTHON_VERSION && \
     ./configure --enable-optimizations && \
