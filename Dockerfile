@@ -35,7 +35,6 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 COPY app/requirements.txt /home/docker/code/app/
 
 RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
-#RUN python -m pip install aioitertools --no-deps
 RUN python -m pip install typing-extensions --no-deps
 RUN python -m pip install jmespath --no-deps
 RUN python -m pip install docutils --no-deps
