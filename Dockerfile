@@ -40,8 +40,7 @@ RUN python -m pip install docutils --no-deps
 RUN python -m pip install urllib3 --no-deps
 RUN python -m pip install python-dateutil --no-deps
 RUN python -m pip install async-timeout --no-deps
-RUN python -m pip install chardet --no-deps
-#RUN python -m pip install multidict --no-deps
+#RUN python -m pip install chardet --no-deps
 RUN python -m pip install six --no-deps
 RUN python -m pip install jsonpickle --no-deps
 RUN python -m pip install wrapt --no-deps
