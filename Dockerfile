@@ -46,8 +46,8 @@ RUN python -m pip install yarl --no-deps
 RUN python -m pip install attrs --no-deps
 RUN python -m pip install six --no-deps
 RUN python -m pip install idna --no-deps
-RUN python -m pip install jsonpickle --no-deps
-#RUN python -m pip install wrapt --no-deps
+#RUN python -m pip install jsonpickle --no-deps
+RUN python -m pip install wrapt --no-deps
 
 # add (the rest of) our code
 COPY . /home/docker/code/
