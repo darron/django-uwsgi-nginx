@@ -35,8 +35,6 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 COPY app/requirements.txt /home/docker/code/app/
 RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 
-
-
 # add (the rest of) our code
 COPY . /home/docker/code/
 
