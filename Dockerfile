@@ -33,8 +33,8 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 # COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
 # to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY app/requirements.txt /home/docker/code/app/
-
 RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
+
 RUN python -m pip install jmespath --no-deps
 RUN python -m pip install docutils --no-deps
 RUN python -m pip install urllib3 --no-deps
@@ -45,8 +45,8 @@ RUN python -m pip install multidict --no-deps
 RUN python -m pip install yarl --no-deps
 RUN python -m pip install attrs --no-deps
 RUN python -m pip install six --no-deps
-RUN python -m pip install idna --no-deps
-#RUN python -m pip install jsonpickle --no-deps
+#RUN python -m pip install idna --no-deps
+RUN python -m pip install jsonpickle --no-deps
 RUN python -m pip install wrapt --no-deps
 
 # add (the rest of) our code
