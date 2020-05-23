@@ -23,7 +23,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install uwsgi now because it takes a little while
-RUN python -m pip install uwsgi --no-deps
+RUN python -m pip install uwsgi
 
 # setup all the configfiles
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
