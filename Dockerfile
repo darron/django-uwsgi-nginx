@@ -38,7 +38,7 @@ RUN python -m pip install mysqlclient==1.4.6
 RUN python -m pip install Django==3.0.5
 RUN python -m pip install aws-xray-sdk==2.4.3
 RUN python -m pip install boto3==1.12.36 --no-deps
-RUN python -m pip install botocore==1.15.36
+RUN python -m pip install botocore==1.15.36 --no-deps
 #RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 
 # add (the rest of) our code
