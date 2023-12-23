@@ -3,7 +3,8 @@ FROM ubuntu:16.04
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
 
-ENV PYTHON_VERSION 3.7.7
+#ENV PYTHON_VERSION 3.7.7
+ENV PYTHON_VERSION 3.12.1
 
 # Install required packages and remove the apt packages cache when done.
 RUN apt-get update && \
@@ -15,7 +16,8 @@ RUN apt-get update && \
     cd Python-$PYTHON_VERSION && \
     ./configure --enable-optimizations && \
     make altinstall && \
-    ln -s /usr/local/bin/python3.7 /usr/local/bin/python && \
+    # ln -s /usr/local/bin/python3.7 /usr/local/bin/python && \
+    ln -s /usr/local/bin/python3.12 /usr/local/bin/python && \
     rm -rf /usr/src/Python-$PYTHON_VERSION.tgz && \
     cd /usr/src && \
     rm -rf /usr/src/Python-$PYTHON_VERSION && \
