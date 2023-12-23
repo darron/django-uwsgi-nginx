@@ -1,9 +1,7 @@
-
-FROM ubuntu:16.04
+FROM ubuntu:22.04
 
 MAINTAINER Leo Du <leo@tianzhui.cloud>
 
-#ENV PYTHON_VERSION 3.7.7
 ENV PYTHON_VERSION 3.12.1
 
 # Install required packages and remove the apt packages cache when done.
@@ -16,7 +14,6 @@ RUN apt-get update && \
     cd Python-$PYTHON_VERSION && \
     ./configure --enable-optimizations && \
     make altinstall && \
-    # ln -s /usr/local/bin/python3.7 /usr/local/bin/python && \
     ln -s /usr/local/bin/python3.12 /usr/local/bin/python && \
     rm -rf /usr/src/Python-$PYTHON_VERSION.tgz && \
     cd /usr/src && \
@@ -35,8 +32,7 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 # COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
 # to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY app/requirements.txt /home/docker/code/app/
-RUN python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
-
+RUN MYSQLCLIENT_CFLAGS="-I/usr/include/mysql" MYSQLCLIENT_LDFLAGS="-L/usr/lib/x86_64-linux-gnu -lmysqlclient" python -m pip install -r /home/docker/code/app/requirements.txt --no-deps
 # add (the rest of) our code
 COPY . /home/docker/code/
 
